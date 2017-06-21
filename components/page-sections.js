@@ -6,6 +6,7 @@ import interactiveMarkdown from './interactive-markdown'
 import ClickToRender from './click-to-render'
 import CodeSandboxEmbed from './code-sandbox-embed'
 import {Anchor} from './styled-links'
+import PageWrapper from './page-wrapper'
 import GitHubSVG from './svgs/github.svg'
 import mdToHTML from './utils/md-to-html'
 
@@ -13,21 +14,6 @@ const repoEditRootURL =
   'https://github.com/kentcdodds/glamorous-website/edit/master'
 
 const projectRoot = __dirname.slice(0, -'/components'.length)
-
-const PageWrapper = glamorous.div((props, {colors}) => ({
-  backgroundColor: colors.white,
-  width: '100%',
-  padding: '1rem',
-  '& > h3': {
-    width: '100%',
-    margin: '20px auto',
-    maxWidth: '50rem',
-  },
-  '& svg': {
-    fill: `${colors.primary}`,
-    width: '1rem',
-  },
-}))
 
 const EditAnchorWrap = glamorous(Div)({
   display: 'flex',
@@ -50,19 +36,18 @@ function PageSections({data}) {
   )
 }
 
+export const Section = glamorous.section((p, {colors}) => ({
+  borderBottom: `1px solid ${colors.primary}`,
+  width: '100%',
+  margin: '20px auto',
+  paddingBottom: 20,
+  maxWidth: '50rem',
+}))
+
 const DocSection = withContent(
   {component: 'page-sections'},
   function DocSection(props) {
     const {title, subtitle, filename, content} = props
-
-    const Section = glamorous.section((p, {colors}) => ({
-      borderBottom: `1px solid ${colors.primary}`,
-      width: '100%',
-      margin: '20px auto',
-      paddingBottom: 20,
-      maxWidth: '50rem',
-    }))
-
     return (
       <Section>
         {filename &&
