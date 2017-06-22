@@ -42,7 +42,7 @@ const Img = glamorous.img({
 
 const userContent = u => {
   if (u.logo) {
-    return <Img src={`./static/images/users/${u.logo}`} />
+    return <Img src={`./static/images/users/${u.logo}`} alt={u.name} />
   }
 
   return (
