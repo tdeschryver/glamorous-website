@@ -15,16 +15,24 @@ const UserContainer = glamorous.div({
   justifyContent: 'space-between',
 })
 
-const User = glamorous(Button)({
+const User = glamorous(Button)((_, {mediaQueries}) => ({
   padding: '5px',
-  width: '33%',
   height: '150px',
   marginTop: '10px',
   lineHeight: '150px',
   fontSize: '2em',
   textAlign: 'center',
   margin: 0,
-})
+  [mediaQueries.smallUp]: {
+    width: '100%',
+  },
+  [mediaQueries.mediumUp]: {
+    width: '49%',
+  },
+  [mediaQueries.largeUp]: {
+    width: '33%',
+  },
+}))
 
 const Img = glamorous.img({
   maxHeight: '100%',
