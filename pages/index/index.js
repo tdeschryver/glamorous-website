@@ -10,6 +10,7 @@ import {Button} from '../../components/styled-links'
 import Hero from '../../components/hero'
 import homePageExample from '../../examples/home-page-example'
 import twitterCard from '../../components/twitter-card'
+import Users from '../../components/users'
 
 const CodePreviewWrapper = glamorous.div((props, {colors}) => ({
   position: 'relative',
@@ -134,6 +135,7 @@ function Home({url, content, locale}) {
       <GettingStarted prefetch={process.env.USE_PREFETCH} href="/basics">
         {content.callToAction}
       </GettingStarted>
+      <Users />
     </Layout>
   )
 }
